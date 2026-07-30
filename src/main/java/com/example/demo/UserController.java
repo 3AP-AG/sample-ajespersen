@@ -27,7 +27,7 @@ public class UserController {
     }
 
     @GetMapping("/greeting")
-    public Greeting greeting(@RequestParam(defaultValue = "World") String name) {
+    public Greeting greeting(@RequestParam(defaultValue = "Woorld") String name) {
         return new Greeting(counter.incrementAndGet(), template.formatted(name));
     }
 
