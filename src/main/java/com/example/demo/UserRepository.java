@@ -1,16 +1,13 @@
 package com.example.demo;
 
+import java.util.List;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
-
-import java.util.List;
 
 @Repository
 public interface UserRepository extends CrudRepository<Customer, Long> {
 
-    List<Customer> findByLastName(String lastName);
+  List<Customer> findByLastName(String lastName);
 
-    Customer findById(long id);
-
-
+  Customer findById(long id);
 }
