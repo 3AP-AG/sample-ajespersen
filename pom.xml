@@ -79,6 +79,9 @@
               <version>1.28.0</version>
               <style>GOOGLE</style>
             </googleJavaFormat>
+            <removeUnusedImports />
+            <trimTrailingWhitespace />
+            <endWithNewline />
           </java>
 
           <pom>
@@ -103,9 +106,6 @@
               </indent>
             </format>
           </formats>
-          <removeUnusedImports />
-          <trimTrailingWhitespace />
-          <endWithNewline />
         </configuration>
 
         <executions>
