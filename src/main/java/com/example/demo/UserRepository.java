@@ -1,7 +1,16 @@
 package com.example.demo;
 
-import org.springframework.stereotype.Service;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
 
-@Service
-public class UserRepository {
+import java.util.List;
+
+@Repository
+public interface UserRepository extends CrudRepository<Customer, Long> {
+
+    List<Customer> findByLastName(String lastName);
+
+    Customer findById(long id);
+
+
 }

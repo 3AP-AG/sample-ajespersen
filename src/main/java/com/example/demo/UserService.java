@@ -2,9 +2,13 @@ package com.example.demo;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
-@Service
+import java.util.List;
+import java.util.stream.StreamSupport;
+
+@Component
 public class UserService {
 
     @Autowired
@@ -22,6 +26,13 @@ public class UserService {
 
     public String registerUser(String name) {
         System.out.println("registerUser "+name);
+        userRepository.save(new Customer("first "+name, "last "+name));
         return name;
+    }
+
+    public List<String> allUserNames() {
+        Iterable<Customer> all = userRepository.findAll();
+        var res = StreamSupport.stream(all.spliterator(), false).map(x -> x.getFirstName()+" <-> "+x.getLastName());
+        return res.toList();
     }
 }
