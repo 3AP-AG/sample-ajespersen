@@ -5,8 +5,6 @@ import java.util.stream.Collectors;
 
 public class LeetSample {
 
-  record Tpl(String org, String order) {}
-
   public String frequencySort3(String s) {
     return s
         .chars()
@@ -33,7 +31,7 @@ public class LeetSample {
     return Arrays.stream(strs)
         .map(
             x ->
-                new Tpl(
+                Map.entry(
                     x,
                     x.chars()
                         .sorted()
@@ -41,8 +39,9 @@ public class LeetSample {
                         .collect(Collectors.joining())))
         .collect(
             Collectors.collectingAndThen(
-                Collectors.groupingBy(Tpl::order),
-                map -> map.values().stream().map(l -> l.stream().map(Tpl::org).toList())))
+                Collectors.groupingBy(Map.Entry::getKey),
+                map ->
+                    map.values().stream().map(l -> l.stream().map(Map.Entry::getValue).toList())))
         .toList();
   }
 }
