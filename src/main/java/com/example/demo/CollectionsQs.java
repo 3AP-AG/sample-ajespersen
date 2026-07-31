@@ -25,7 +25,7 @@ public class CollectionsQs {
 
   // Write a method that takes a List<String> and applies String.trim to each element.
   public static List<String> trimStrings(List<String> lst) {
-    lst.stream().map(s -> s.trim()).toList();
+    return lst.stream().map(s -> s.trim()).toList();
   }
 
   // Consider the four core interfaces, Set, List, Queue, and Map. For each of the following four
