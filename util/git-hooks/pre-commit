@@ -1,0 +1,5 @@
+#!/bin/sh
+
+mvn spotless:apply test
+
+git add -u
