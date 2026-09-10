@@ -1,9 +1,11 @@
 package ch.threeap.andersfp.guardedblocks;
 
+import java.util.concurrent.ArrayBlockingQueue;
+
 public class ProducerConsumerExample {
   public static void main(String[] args) {
-    Drop drop = new Drop();
-    (new Thread(new Producer(drop))).start();
-    (new Thread(new Consumer(drop))).start();
+    var queue = new ArrayBlockingQueue(10, true);
+    (new Thread(new Producer(queue))).start();
+    (new Thread(new Consumer(queue))).start();
   }
 }
