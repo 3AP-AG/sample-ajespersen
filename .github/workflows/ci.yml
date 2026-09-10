@@ -1,0 +1,26 @@
+name: Java CI with Maven
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Set up JDK
+      uses: actions/setup-java@v4
+      with:
+        java-version: '21' # Adjust to match your project's Java version
+        distribution: 'temurin'
+        cache: 'maven'
+
+    - name: Verify Spotless Formatting
+      run: mvn -B spotless:check
+
+    - name: Run Tests & Build
+      run: mvn -B test
